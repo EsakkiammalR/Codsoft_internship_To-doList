@@ -1,0 +1,52 @@
+# Initialize an empty to-do list
+todo_list = []
+
+while True:
+    print("To-Do List:")
+    for index, task in enumerate(todo_list):
+        print(f"{index + 1}. {task}")
+
+    print("\nOptions:")
+    print("1. Add a new task")
+    print("2. Update a task")
+    print("3. Mark a task as completed")
+    print("4. Remove a task")
+    print("5. Quit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == '1':
+        # Option 1: Add a new task
+        new_task = input("Enter a new task: ")
+        todo_list.append(new_task)
+    elif choice == '2':
+        # Option 2: Update a task
+        task_index = int(input("Enter the task number you want to update: ")) - 1
+        if 0 <= task_index < len(todo_list):
+            new_task = input("Enter the updated task: ")
+            todo_list[task_index] = new_task
+        else:
+            print("Invalid task number.")
+    elif choice == '3':
+        # Option 3: Mark a task as completed
+        task_index = int(input("Enter the task number you want to mark as completed: ")) - 1
+        if 0 <= task_index < len(todo_list):
+            print(f"Marking '{todo_list[task_index]}' as completed.")
+            # You can add additional logic to track completed tasks
+        else:
+            print("Invalid task number.")
+    elif choice == '4':
+        # Option 4: Remove a task
+        task_index = int(input("Enter the task number you want to remove: ")) - 1
+        if 0 <= task_index < len(todo_list):
+            removed_task = todo_list.pop(task_index)
+            print(f"Removed task: '{removed_task}'")
+        else:
+            print("Invalid task number.")
+    elif choice == '5':
+        # Option 5: Quit
+        print("Goodbye!")
+        break
+    else:
+        # Invalid choice
+        print("Invalid choice. Please try again.")
